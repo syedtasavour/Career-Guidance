@@ -5,8 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "dev": "nodemon app.js",
-    "vercel-build": "npm install"
+    "dev": "nodemon app.js"
   },
   "dependencies": {
     "express": "^4.17.1",
