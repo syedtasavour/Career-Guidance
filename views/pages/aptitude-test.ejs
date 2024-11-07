@@ -1,0 +1,34 @@
+<%- include('../partials/navbar') %>
+<link rel="stylesheet" href="/css/style.css">
+<h1>Aptitude Test</h1>
+<form id="testForm" action="/student/submit-test" method="POST">
+  <% questions.forEach((question, index) => { %>
+    <div class="question">
+      <p><strong><%= index + 1 %>. <%= question.question %></strong></p>
+      <% const options = [...question.incorrect_answers, question.correct_answer].sort(); %>
+      <% options.forEach(option => { %>
+        <label>
+          <input type="radio" name="question-<%= index %>" value="<%= option %>" required>
+          <%= option %>
+        </label>
+      <% }) %>
+    </div>
+  <% }) %>
+  <input type="hidden" name="score" id="score" value="0">
+  <button type="button" onclick="calculateScore()">Submit Test</button>
+</form>
+
+<script>
+  function calculateScore() {
+    let score = 0;
+    <% questions.forEach((question, index) => { %>
+      const correctAnswer = "<%= question.correct_answer %>";
+      const selectedOption = document.querySelector('input[name="question-<%= index %>"]:checked');
+      if (selectedOption && selectedOption.value === correctAnswer) {
+        score++;
+      }
+    <% }) %>
+    document.getElementById('score').value = score;
+    document.getElementById('testForm').submit();
+  }
+</script> 

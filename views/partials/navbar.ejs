@@ -1,0 +1,20 @@
+<nav>
+  <ul>
+    <li><a href="/">Home</a></li>
+    <% if (!session.userId) { %>
+      <li><a href="/auth/login">Login</a></li>
+      <li><a href="/auth/register">Register</a></li>
+    <% } else { %>
+      <% if (session.role === 'admin') { %>
+        <li><a href="/admin/dashboard">Admin Dashboard</a></li>
+        <li><a href="/college/register">Register College</a></li>
+      <% } else { %>
+        <li><a href="/student/dashboard">Student Dashboard</a></li>
+        <li><a href="/college/list">View Colleges</a></li>
+        <li><a href="/student/aptitude-test">Aptitude Test</a></li>
+      <% } %>
+      <li><a href="/auth/logout">Logout</a></li>
+      <li>Welcome, <%= session.username %></li>
+    <% } %>
+  </ul>
+</nav> 

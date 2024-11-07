@@ -1,0 +1,19 @@
+<%- include('../partials/navbar') %>
+<link rel="stylesheet" href="/css/style.css">
+<h1>Student Dashboard</h1>
+<p>Welcome to your dashboard. Here you can manage your profile, view colleges, and take aptitude tests.</p>
+
+<div class="container">
+  <h2>Your Profile</h2>
+  <p>Name: <%= user.name %></p>
+  <p>CGPA: <%= user.cgpa %></p>
+  <p>SOP: <%= user.sop %></p>
+  <a href="/student/details">Update Details</a>
+
+  <h2>Your Test Scores</h2>
+  <ul>
+    <% tests.forEach(test => { %>
+      <li>Score: <%= test.score %> on <%= test.date.toDateString() %></li>
+    <% }) %>
+  </ul>
+</div> 

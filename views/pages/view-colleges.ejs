@@ -1,0 +1,12 @@
+<%- include('../partials/navbar') %>
+<link rel="stylesheet" href="/css/style.css">
+<h1>All Colleges</h1>
+<ul>
+  <% colleges.forEach(college => { %>
+    <li>
+      <strong><%= college.name %></strong> - <%= college.location %>
+      <p>Courses: <%= college.courses.join(', ') %></p>
+      <p>Eligibility: <%= college.eligibilityCriteria %></p>
+    </li>
+  <% }) %>
+</ul> 

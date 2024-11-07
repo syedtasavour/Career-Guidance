@@ -1,0 +1,15 @@
+<%- include('../partials/navbar') %>
+<link rel="stylesheet" href="/css/style.css">
+<h1>Register</h1>
+<% if (message) { %>
+  <p><%= message %></p>
+<% } %>
+<form action="/auth/register" method="POST">
+  <input type="text" name="username" placeholder="Username" required>
+  <input type="password" name="password" placeholder="Password" required>
+  <select name="role" required>
+    <option value="student">Student</option>
+    <option value="admin">Admin</option>
+  </select>
+  <button type="submit">Register</button>
+</form> 

@@ -1,0 +1,12 @@
+<%- include('../partials/navbar') %>
+<link rel="stylesheet" href="/css/style.css">
+<h1>Select Your Career</h1>
+<form action="/student/select-career" method="POST">
+  <select name="career">
+    <option value="engineering">Engineering</option>
+    <option value="medicine">Medicine</option>
+    <option value="arts">Arts</option>
+    <!-- Add more options as needed -->
+  </select>
+  <button type="submit">Select</button>
+</form> 
