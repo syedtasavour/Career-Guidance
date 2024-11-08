@@ -6,6 +6,7 @@ const session = require('express-session');
 const flash = require('connect-flash');
 const bodyParser = require('body-parser');
 const path = require('path');
+const MongoStore = require('connect-mongo');
 
 const app = express();
 
@@ -28,7 +29,11 @@ app.set('view engine', 'ejs');
 app.use(session({
   secret: 'yourSecretKey',
   resave: false,
-  saveUninitialized: true
+  saveUninitialized: true,
+  store: MongoStore.create({
+    mongoUrl: process.env.MONGODB_URI,
+    collectionName: 'sessions'
+  })
 }));
 app.use(flash());
 
